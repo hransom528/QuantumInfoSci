@@ -58,8 +58,9 @@ def bb84_circ(N, state, alice_basis, bob_basis):
 
 # Initialize quantum circuit and backend
 qc = bb84_circ(N, alice_state, alice_basis, bob_basis)
-print(qc.draw()) # Plots circuit
-qc.draw(output='mpl').savefig('bb84_circuit.png')
+print(qc) # Plots circuit
+#qc.draw(output='mpl').savefig('bb84_circuit.png')
+#plt.show()
 #service = QiskitRuntimeService(channel="ibm_quantum", token=api_key)
 #backend = service.least_busy(simulator=False, operational=True)
 
