@@ -18,6 +18,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from dotenv import load_dotenv
 import os
+import argparse
 #%matplotlib inline
 
 # Load IBM Quantum API key from .env file
@@ -29,9 +30,14 @@ N = 32
 alice_basis = np.random.randint(2, size=N)
 alice_state = np.random.randint(2, size=N)
 bob_basis = np.random.randint(2, size=N)
+xor_basis = np.logical_xor(alice_basis, bob_basis).astype(int)
+agreement_fraction = (N - np.sum(xor_basis)) / N
 print(f"Alice's State:\t {np.array2string(alice_state)}")
 print(f"Alice's Bases:\t {np.array2string(alice_basis)}")
 print(f"Bob's Bases:\t {np.array2string(bob_basis)}")
+
+print(f"\nXOR Bases:\t {np.array2string(xor_basis)}")
+print(f"Agreement Fraction: {agreement_fraction}")
 
 # Create BB84 Quantum Circuit
 def bb84_circ(N, state, alice_basis, bob_basis):
